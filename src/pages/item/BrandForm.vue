@@ -23,7 +23,7 @@
       </v-flex>
       <v-flex>
         <v-upload
-          v-model="brand.image" url="/item/upload" :multiple="false" :pic-width="250" :pic-height="90"
+          v-model="brand.image" url="/upload/image" :multiple="false" :pic-width="250" :pic-height="90"
         />
       </v-flex>
     </v-layout>
@@ -79,7 +79,7 @@
           // 将数据提交到后台
           this.$http({
             method: this.isEdit ? 'put' : 'post',
-            url: '/item/brand',
+            url: '/item/brands',
             data: this.$qs.stringify(this.brand)
           }).then(() => {
             // 关闭窗口
@@ -97,7 +97,8 @@
       },
       // 图片上传出成功后操作
       handleImageSuccess(res) {
-        this.brand.image = res;
+        console.log("发布会的=="+res.url);
+        this.brand.image = res.url;
       },
       removeImage(){
         this.brand.image = "";
