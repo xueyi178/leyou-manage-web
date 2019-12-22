@@ -101,6 +101,7 @@
           //分页查询品牌信息
           loadBrands(){
             this.loading = true;
+
             this.$http.get("/item/brands/page",{
               params:{
                 //当前页
